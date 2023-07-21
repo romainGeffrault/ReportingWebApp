@@ -1,6 +1,6 @@
 # Lancer le projet
 ## En ligne:
-- firebase
+- firebase : https://reporting-app-612f4.web.app/list
 
 ## En local
 `npm run start` & `json-server --watch db.json`
