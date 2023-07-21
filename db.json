@@ -1,0 +1,72 @@
+{
+  "reporting": [
+    {
+      "id": 1,
+      "author": {
+        "first_name": "John1",
+        "last_name": "Doe",
+        "birth_date": "1990-01-01",
+        "sex": "Non-binary",
+        "email": "j.doe@mobireport.com"
+      },
+      "description": "Un soucis sur mon réseau",
+      "observations": [
+        {
+          "id": 1,
+          "name": "Observation 1"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "author": {
+        "first_name": "John3",
+        "last_name": "Doe",
+        "birth_date": "1990-01-01",
+        "sex": "Men",
+        "email": "j.doe@mobireport.com"
+      },
+      "description": "Un soucis sur mon réseau",
+      "observations": [
+        {
+          "id": 2,
+          "name": "Observation 2"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "author": {
+        "first_name": "32",
+        "last_name": "gjhjhb",
+        "birth_date": "2023-07-05T22:00:00.000Z",
+        "sex": "Woman",
+        "email": "r@g.c"
+      },
+      "description": "kjnjkkjnnkj",
+      "observations": [
+        {
+          "id": 3,
+          "name": "Observation 3"
+        }
+      ]
+    }
+  ],
+  "observation": [
+    {
+      "id": 1,
+      "name": "Observation 1"
+    },
+    {
+      "id": 2,
+      "name": "Observation 2"
+    },
+    {
+      "id": 3,
+      "name": "Observation 3"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

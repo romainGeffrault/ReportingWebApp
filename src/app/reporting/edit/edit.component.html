@@ -1,0 +1,95 @@
+<h1>Report <app-back-button routerLink="/list">Back</app-back-button></h1>
+<ng-container *ngIf="vm$ | async as vm; else loading">
+    <form *ngIf="!vm.hasError && !vm.isLoading" [formGroup]="vm.reportForm" (ngSubmit)="onSubmit(vm.reportForm, vm.savingReport)">
+        <div class="container">
+            <ng-container formGroupName="author">
+
+                <div class="row my-4">
+                    <mat-form-field hintLabel="Max 50 characters" class="col-6">
+                        <mat-label>First name</mat-label>
+                        <input matInput #input formControlName="first_name" placeholder="Ex.Jean">
+                        <mat-hint align="end">{{input.value.length}}/50</mat-hint>
+                    </mat-form-field>
+
+                    <mat-form-field hintLabel="Max 50 characters" class="col-6">
+                        <mat-label>Last name</mat-label>
+                        <input matInput #inputLastName formControlName="last_name" placeholder="Ex.Doe">
+                        <mat-hint align="end">{{inputLastName.value.length}}/50</mat-hint>
+                    </mat-form-field>
+                </div>
+
+                <div class="row my-2">
+                    <mat-form-field class="col">
+                        <mat-label>Birthday</mat-label>
+                        <input matInput [min]="date100YearsAgo" [max]="currentDate" [matDatepicker]="picker" formControlName="birth_date">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+
+                <div class="row my-2">
+                    <mat-radio-group
+                        class="col d-flex justify-content-center"
+                        aria-labelledby="radio-group-sex"
+                        formControlName="sex">
+                        <mat-radio-button *ngFor="let sex of ['Men', 'Woman', 'Non-binary']" [value]="sex">
+                            {{sex}}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+
+                <div class="row my-2">
+                    <mat-form-field class="col">
+                        <mat-label>Email</mat-label>
+                        <input matInput #input formControlName="email" placeholder="Ex.romain@gmail.com">
+                        <mat-error *ngIf="vm.reportForm.controls.author.controls.email.hasError('isMailAlreadyUsed')">
+                            This email is already used
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+            </ng-container>
+
+            <div class="row my-2">
+                <mat-form-field class="col">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput #input formControlName="description" placeholder="Ex.Error"></textarea>
+                </mat-form-field>
+            </div>
+            <div class="row my-2">
+                <mat-form-field class="col">
+                    <mat-label>Observations</mat-label>
+                    <mat-select formControlName="observations" multiple>
+                    <mat-option *ngFor="let observation of vm.observationList" [value]="observation.id">{{observation.name}}</mat-option>
+                    <mat-option *ngIf="!vm.observationList" disabled>Loading...</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row my-2 justify-content-end">
+                <div class="col d-flex justify-content-end">
+                    <button mat-raised-button color="accent" [disabled]="vm.reportForm.invalid || vm.reportForm.pristine">
+                        <span class="d-flex">
+                            Save
+                            <mat-spinner class="pl-2" *ngIf="vm.savingReport" [diameter]="20"/>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <ng-container *ngIf="!vm.hasError && vm.isLoading" [ngTemplateOutlet]="loading"/>
+    <div *ngIf="vm.hasError" class="alert alert-danger" role="alert">
+        Failed to load report.<br>
+        Error : {{vm.hasError}}
+    </div>
+</ng-container>
+
+<ng-template #loading>
+    <div class="d-flex justify-content-center">
+        <mat-spinner/>
+    </div>
+</ng-template>

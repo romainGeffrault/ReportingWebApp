@@ -1,0 +1,39 @@
+<ng-container *ngIf="vm$ | async as vm; else loading">
+    <div>
+        <h1>Reporting list</h1>
+        <button mat-button color="accent" [routerLink]="['/edit']" routerLinkActive="router-link-active" >
+            <mat-icon>add</mat-icon>
+            Report
+        </button>
+    </div>
+
+    <ng-container *ngIf="vm.reportingList && vm.reportingList.length">
+        <ng-container *isMobile>
+            <app-card-report [report]="report" *ngFor="let report of vm.reportingList; trackBy: trackingRow" />
+        </ng-container>
+
+        <ng-container *isNotMobile>
+            <app-table-report [reportingList]="vm.reportingList">
+                <ng-template #actionsTpl let-report>
+                    <div role="actions">
+                        <button mat-button color="accent" [routerLink]="['/edit', report.id]"><mat-icon>edit</mat-icon></button>
+                    </div>
+                </ng-template>
+            </app-table-report>
+        </ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="!vm.reportingListError && vm.isLoading" [ngTemplateOutlet]="loading"/>
+
+    <div *ngIf="vm.reportingListError">
+        Failed to load report.<br>
+        Error : {{vm.reportingListError}}
+    </div>
+
+</ng-container>
+
+<ng-template #loading>
+    <div class="d-flex justify-content-center">
+        <mat-spinner/>
+    </div>
+</ng-template>

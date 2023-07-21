@@ -1,0 +1,57 @@
+<h2>Description</h2>
+<ul>
+    <li>Créer un "signalement" avec les champs suivants:
+      <ul>
+        <li>Auteur:</li>
+        <li>Prénom : string - max 50 caractères</li>
+        <li>Nom : string - max 50 caractères</li>
+        <li>Date de naissance: date - pas plus de 100 ans</li>
+        <li>Sexe : Homme / Femme / Non-binaire</li>
+        <li>Email : email valide - unique</li>
+        <li>Description : string</li>
+        <li>Observations : array - chips - à choisir dans la liste provenant d’une API</li>
+      </ul>
+    </li>
+    <li>Modifier un signalement</li>
+    <li>Liste des signalements</li>
+</ul>
+
+<h2>Pré-requis</h2>
+<ul>
+    <li>Dernière version de Angular</li>
+    <li>Utiliser le moteur de rendu type material design</li>
+    <li>Mettre le code source sur Github.</li>
+    <li>Faire un README avec explication des choix technico-fonctionnels.</li>
+  </ul>
+
+<h2>Compléments d’informations</h2>
+<ol>
+    <li>Le respect des normes de codage devra être appliqué.</li>
+    <li>Une qualité de code sera attendue.</li>
+    <li>Affichage de messages d’erreur (API, Formulaire, etc...)</li>
+    <li>Une optimisation d’Angular en termes de performances est un plus.</li>
+</ol>
+Plus:
+<ul>
+    <li>Proposer une belle UI.</li>
+    <li>Une ergonomie responsive.</li>
+</ul>
+<h2>Annexe</h2>
+
+Format de réponse pour la liste des signalements:
+<pre>{{listData | json}}</pre>
+
+Format attendu sur le POST / PUT de /reporting:
+Réponse : 200
+
+<pre>{{putSchema | json}}</pre>
+
+Réponse API au post si l’email existe déjà:
+Réponse : 400
+<pre>{{emailAlreadyExists | json}}</pre>
+
+Réponse API au post / put si succès:
+Réponse : 204
+
+Format de réponse pour la liste des observations :
+<pre>{{observationList | json}}</pre>
