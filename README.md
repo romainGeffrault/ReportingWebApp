@@ -1,10 +1,3 @@
-# Stack technique
-- Angular 16.1
-- Angular material
-- Bootstrap 5
-- json-server (simuler le backend en local)
-- NodeJs v16.17
-
 # Lancer le projet
 ## En ligne:
 - firebase
@@ -68,10 +61,17 @@ L'api local et celle du web-storage implémentent la classe abstraite afin de ga
 ## Remarques
 Certaines parties du code ne sont pas compatibles avec Angular Universal (appel direct au DOM). Mais cela pourrait facilement le devenir.
 
-# Optimisations
+# Optimisations encore possibles
 - Utilisation de signals
 - Mettre en place RouteReuseStrategy pour mettre en cache les pages
 - Utiliser esbuild en dev pour accélérer le développement (démarrage du projet et recompilation), mais je trouve le comportement un peu bizarre surtout pour une si petite application.
+
+# Stack technique
+- Angular 16.1
+- Angular material
+- Bootstrap 5
+- json-server (simuler le backend en local)
+- NodeJs v16.17
 
 # Auteur
 Romain Geffrault
